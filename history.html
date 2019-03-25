@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>history</title>
+</head>
+<body>
+    <div id="s" style="width:400px;height:300px;">
+        <input id="goods1" type="search" value='' placeholder="请输入想查找的商品" style="width:220px;height:42px;border:1.5px solid orange;"/>
+        <input type="button" value="搜索" id="search" style="width:150px;height:42px;">
+        <p>最近搜索</p>
+        <div id="hist"></div>
+        <button id="clear" style="float:right; color:white; border:0;">X</button>
+    </div>
+    
+</body>
+<script>
+    var goods1=document.getElementById('goods1');
+    var search=document.getElementById('search');
+    var hist=document.getElementById('hist');
+    var clear=document.getElementById('clear');
+    search.onclick=function() {
+        var goods=goods1.value;
+        var time=new Date().getTime();
+        for(var i=0;i<localStorage.length;i++){
+            if(localStorage.getItem(localStorage.key(i))==goods){
+                localStorage.removeItem(key(i));
+            }
+        }
+        localStorage.setItem(time,goods);
+        var histb=document.createElement('button');
+        histb.innerHTML=goods;
+        histb.setAttribute('style',' margin-left:8px;margin-top:10px;border: 1px solid grey;font-size:15px;');
+        hist.appendChild(histb);
+        document.getElementById('goods1').value='';
+        
+    }
+    var histc=hist.childNodes;
+    clear.onclick=function(){
+        if(window.confirm('确定要全部清除吗？')){
+            localStorage.clear();
+            for(var i=histc.length-1;i>=0;i--){
+                hist.removeChild(histc[i]);
+            }
+        }
+    }
+    for(var i=0;i<localStorage.length;i++){
+        var a=localStorage.key(i);
+        var key=localStorage.getItem(a);
+        varhistb=document.createElement('button');
+        histb.innerHTML=key;
+        histb.setAttribute('style',' margin-left:8px;margin-top:10px;border: 1px solid grey;font-size:15px');
+        hist.appendChild(histb);
+    }
+
+</script>
+</html>
