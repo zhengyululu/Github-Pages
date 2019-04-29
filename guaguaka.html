@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .ccard{
+        width: 200px;
+        height: 100px;
+        line-height: 100px;
+        position: absolute;
+        color: red;
+        top:100px;
+        left: 100px;
+        font-size: 30px;
+        text-align: center;
+    }
+    #ccanvas{
+        border:1px solid #ccc;
+        position: absolute;
+        top:100px;
+        left: 100px;
+    }
+</style>
+<body>
+    <div class="ccard">
+        一等奖
+    </div>
+    <canvas id="ccanvas"></canvas>               
+</body>
+<script>
+    document.querySelector('body').addEventListener('touchstart', function (e) {
+        var e=e||window.event;
+        e.preventDefault();
+    }); 
+    var card=document.getElementById('ccanvas');
+    var ctx=card.getContext('2d');
+    card.width=200;
+    card.height=100;
+    ctx.beginPath();
+    //第一层画布
+    ctx.fillStyle="#888";
+    ctx.fillRect(0,0,200,100);
+    ctx.closePath();
+    //第二层画布
+    ctx.font="bold 50px Microsoft Yahei";
+    ctx.fillStyle="#666666";
+    ctx.fillText("刮一刮",30,65);           
+    ctx.globalCompositeOperation="destination-out";//新图像和原图像重合部分变透明   
+
+    card.addEventListener('mousedown',function(e){
+    var e=e||window.event;
+    var x=e.clientX-card.offsetLeft;
+    var y=e.clientY-card.offsetTop;
+    ctx.moveTo(x,y)
+    card.addEventListener('mousemove',move,false)
+    },false)
+    card.addEventListener('mouseup',function(){
+        clear();
+        card.removeEventListener('mousemove',move,false)
+    },false)            
+    function move(e){
+        if(typeof e.touches!='undefined'){
+            e=e.touches[0];
+        }
+    var x1=e.clientX-card.offsetLeft;
+    var y1=e.clientY-card.offsetTop;
+    ctx.strokeStyle="white";
+    ctx.lineCap="round";
+    ctx.lineWidth=20;
+    ctx.lineTo(x1,y1);
+    ctx.stroke();
+    }
+    function clear(){
+        var data=ctx.getImageData(0,0,card.width,card.height).data;   
+        for(var i=0,j=0;i<data.length;i+=4){//data.length=card.width*card.heigth*4,一个像素块是一个对象RGBA四个值,A范围为0~255
+            if(data[i]&&data[i+1]&&data[i+2]&&data[i+3]){//存在imageData对象时j加1,该像素区域透明即为不存在该对象
+                j++;
+            }
+        }
+        if(j<=card.width*card.height*0.2){//超过canvas面积的20%，就清除画布
+            ctx.clearRect(0,0,card.width,card.height);
+        }
+    }
+</script>
+</html>
