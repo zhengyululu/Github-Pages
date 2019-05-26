@@ -1,0 +1,170 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+    <style>
+        #pic{
+            
+            float:left;
+        }
+        #wenzi{
+            width:
+        }
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="pic">
+        <img src="zhanqiao.jpg" alt="">
+    </div>
+    <div></div>
+    <div id="wenzi">
+        <h2>青岛栈桥</h2>
+        <p>国家AAAA级旅游景区</p>
+        <p>青岛栈桥是青岛海滨风景区的景点之一，是国</p>
+        <p>务院于1982年首批公布的国家级风景名胜区。</p>
+        <p>青岛栈桥位于游人如织的青岛中山路南段，桥</p>
+        <p>   身从海岸探入如弯月般的青岛湾深处。桥身供</p>
+        <p> 游人参观并在此停靠旅游船由此乘船可看海</p>
+        上青岛。
+
+    </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            #dateA{
+                background-color: coral;
+                width: 50px;
+                height: 50px;
+                border-radius: 25px 25px;
+                position: absolute;
+                left: 280px;
+                top: 20px;
+                z-index: 3;
+            }
+            #dateA span{
+                margin-left: 10px;
+                display: block;
+                color: aliceblue;
+            }
+            #dateB{
+                position: absolute;
+                background-color: coral;
+                border-radius: 2px 2px;
+                width: 50px;
+                height: 30px;
+                left: 8px;
+                transition-duration: 0.5s;
+                z-index: 3;
+                top: 208px;
+                
+            }
+            
+            #kuang{
+                border-radius: 3px;
+                width: 350px;
+                height: 400px;
+                overflow: hidden;
+                box-shadow: 0 0 10px 5px gray;
+            }
+            #tu1{
+                background-image: url(zhanqiao.jpg);
+                width: 350px;
+                height: 230px;
+                background-size: contain;
+                background-origin: padding-box;
+                transition-property:"background-color";
+                transition-duration: 0.5s;
+                z-index: 1;
+            }
+            #dateB span{
+                display: inline-block;
+                color: aliceblue;
+                margin-left: 7px;
+                margin-top: 3px;
+            }
+            #tu2{
+                background-color: white;
+                margin-top: -1px;
+                width: 350px;
+                height: 300px;
+                transition-duration: 0.5s;
+                z-index: 3;
+            }
+            #kuang:hover #tu2{
+                transform: translate(0,-60px);
+            }
+            #kuang:hover #dateB{
+                transform: translate(0,-60px);                
+            }
+            #tu2 span{
+                display: block;
+            }
+            #kuang:hover #tu1{
+                transform:scale(1.3,1.3);   
+                box-shadow: 0 0 500px 70px grey inset;
+                           
+            }
+            #kuang:hover #scriptHide{
+                display: block;
+                margin-left: 20px;
+            }
+            #scriptHide{
+                width: 300px;
+                display: none;  
+            }
+            #end{
+                width: 350px;
+                height: 30px;
+                position: absolute;
+                top:380px;
+                color:grey;
+                font-size: 14px;
+                background-color: white;
+            }
+            #s1{
+                margin-left: 20px;
+                font-size: 23px;
+                margin-bottom: 5px;
+            }
+            #s2{
+                margin-left: 20px;
+                color: orange;
+                font-size: 20px;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div id="kuang">
+            <div id="tu1"></div>
+            <div id="tu2">
+                <span id="s1">青岛栈桥</span>
+                <span id="s2">国家AAAA级旅游景区</span>
+                <div id="scriptHide">
+                    青岛栈桥是青岛海滨风景区的景点之一，是国务院于1982年首批公布的国家级风景名胜区。青岛栈桥位于游人如织的青岛中山路南段，桥身从海岸探入如弯月般的青岛湾深处。桥身供
+                    游人参观并在此停靠旅游船由此乘船可看海上青岛。
+                </div>
+            </div>
+            <div id="dateB"><span>照片</span></div>
+            <div id="dateA">
+                <span>&nbsp15</span>
+                <span>五月</span>
+            </div>
+            <div id="end">
+                <span style="padding-left: 20px;">10分钟前</span>  
+                <span style="margin-left: 30px;">123评论</span>
+        </div>
+    </body>
+</html>
