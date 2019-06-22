@@ -8,6 +8,8 @@
     <!-- <script src="js/jquery.js"/></script> -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+
 </head>
 <style>
 .top{
@@ -22,9 +24,9 @@
 .navbar-nav>li:first-child{
     margin-left: 120px
 }
-.active>a:hover{
-    border-bottom:2px solid #f38a12;
+.active{
 	color:#f38a12;
+	background-color:hsl(0, 8%, 85%);
 }
 .navbar-nav>li>a{
     color: #000;
@@ -356,7 +358,7 @@ opacity: 0.6;
 	}
 }
 </style>
-<body>
+<body data-spy="scroll" data-target=".navbar">
 <!-- PC端 -->
 <div class='all' style="background-color: #dddddd;width: 100%">
 <!-- 导航栏 -->
@@ -461,7 +463,6 @@ opacity: 0.6;
 				<span style="font-size: 15px">popular tourist routes</span>
 			</div>
 		<div  style="width:1200px;height:1155px;margin:0 auto;">
-			
 			<div class="htl" style="width:588px;height:1020px;;float: left;">
 				<div style="width:590px;height: 450px;background-color: black">
 					<img src="img/hot1.jpg" alt="">
@@ -497,8 +498,8 @@ opacity: 0.6;
 		</div>
 	</div>
 <!-- 签证推荐 -->
-	<div class="container">
-		<div class="container" style="" id="qztj">
+	<div class="container" id="qztj">
+		<div class="container" style="" >
 			<div class="container" style="text-align: center;">
 				<span style="font-size: 24px;">签  &nbsp;&nbsp;&nbsp; 证&nbsp;&nbsp;&nbsp; 推&nbsp;&nbsp;&nbsp; 荐</span>
 				<br>
